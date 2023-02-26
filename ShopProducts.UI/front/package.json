@@ -27,6 +27,7 @@
     "@dwtechs/checkhard": "2.19.1",
     "@dwtechs/csvx": "0.3.1",
     "@dwtechs/ctrltab": "3.0.1",
+    "bootstrap": "^5.2.3",
     "core-js": "3.26.1",
     "file-saver": "2.0.5",
     "highlight.js": "10.6.0",
@@ -55,9 +56,5 @@
     "protractor": "7.0.0",
     "ts-node": "7.0.0",
     "tslint": "6.1.0"
-  },
-  "description": "Créer un module angular \"product\" avec 2 composants (basés sur primeng):   - **products-admin** : qui liste les produits et qui permet de les administrer (ajouter, supprimer, modifier).     Il doit être accessible à cette adresse : http://localhost:4200/admin/products  - **products** : qui liste les produits en mode lecture seule, comme sur une boutique en ligne.     Il doit être accessible à cette adresse : http://localhost:4200/products",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  }
 }
