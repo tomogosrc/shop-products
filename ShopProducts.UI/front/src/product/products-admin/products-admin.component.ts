@@ -30,12 +30,12 @@ export class ProductsAdminComponent implements OnInit {
    * @param id 
    */
   editProductFromTheList(id: number) {
-    this.productsService.getOneProduct(id).subscribe(
-      (res: Product) => {
-        if (res !== null) 
-          this.productsService.editProduct(res);
-      }
-    );
+    // this.productsService.getOneProduct(id).subscribe(
+    //   (res: Product) => {
+    //     if (res !== null) 
+    //       this.productsService.editProduct(res);
+    //   }
+    // );
 
   }
 

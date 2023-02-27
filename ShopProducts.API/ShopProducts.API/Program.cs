@@ -17,6 +17,12 @@ builder.Services.AddDbContext<ShoProductsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddCors(options => options.AddPolicy(name: "ShopProducts",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    }));
+
 builder.Services.AddScoped<IShopProductsRepository, ShopProductsRepository>();
 
 var app = builder.Build();
@@ -27,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("ShopProducts");
 
 app.UseHttpsRedirection();
 
