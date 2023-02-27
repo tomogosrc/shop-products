@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "4f66f998-3ee5-4a0d-9311-f62ba4a0feea",
+		"name": "ShopProducts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"get products\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7263/api/ShopProducts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7263",
+					"path": [
+						"api",
+						"ShopProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"create products\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response body, function\", function () {\r",
+							"    var responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[responseJson.length - 1].code).to.eql(\"fbb5zf5sq\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].name).to.eql(\"product 1\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].description).to.eql(\"test product\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].price).to.eql(10);\r",
+							"    pm.expect(responseJson[responseJson.length - 1].quantity).to.eql(5);\r",
+							"    pm.expect(responseJson[responseJson.length - 1].inventoryStatus).to.eql(\"AVAILABLE\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].category).to.eql(\"simple product\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].image).to.eql(\"#\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].rating).to.eql(4);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"code\": \"fbb5zf5sq\",\r\n  \"name\": \"product 1\",\r\n  \"description\": \"test product\",\r\n  \"price\": 10,\r\n  \"quantity\": 5,\r\n  \"inventoryStatus\": \"AVAILABLE\",\r\n  \"category\": \"simple product\",\r\n  \"image\": \"#\",\r\n  \"rating\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7263/api/ShopProducts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7263",
+					"path": [
+						"api",
+						"ShopProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.sendRequest({\r",
+							"    url: 'https://localhost:7263/api/ShopProducts',\r",
+							"    method: 'POST',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/json'\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify({\r",
+							"            id: 0,\r",
+							"            code: \"fbb5zf5sq\",\r",
+							"            name: \"product 1\",\r",
+							"            description: \"test product\",\r",
+							"            price: 10,\r",
+							"            quantity: 5,\r",
+							"            inventoryStatus: \"AVAILABLE\",\r",
+							"            category: \"simple product\",\r",
+							"            image: \"#\",\r",
+							"            rating: 4\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, response) {\r",
+							"    // Handle any errors that occurred during the request\r",
+							"    if (err) {\r",
+							"        console.error(err);\r",
+							"        throw new Error(\"Error occurred during request: \" + err.message);\r",
+							"    }\r",
+							"    \r",
+							"    // Verify the response code and format\r",
+							"    pm.expect(response).to.not.be.null;\r",
+							"    pm.expect(response.code).to.eql(201);\r",
+							"\r",
+							"    var responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson[responseJson.length - 1].code).to.eql(\"dffssfsfs\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].name).to.eql(\"product 2\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].description).to.eql(\"test product update\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].price).to.eql(12);\r",
+							"    pm.expect(responseJson[responseJson.length - 1].quantity).to.eql(7);\r",
+							"    pm.expect(responseJson[responseJson.length - 1].inventoryStatus).to.eql(\"UPDATE\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].category).to.eql(\"simple product update\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].image).to.eql(\"#\");\r",
+							"    pm.expect(responseJson[responseJson.length - 1].rating).to.eql(4);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"code\": \"dffssfsfs\",\r\n  \"name\": \"product 2\",\r\n  \"description\": \"test product update\",\r\n  \"price\": 12,\r\n  \"quantity\": 7,\r\n  \"inventoryStatus\": \"Update\",\r\n  \"category\": \"simple product update\",\r\n  \"image\": \"#\",\r\n  \"rating\": 2\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7263/api/ShopProducts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7263",
+					"path": [
+						"api",
+						"ShopProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: 'https://localhost:7263/api/ShopProducts',\r",
+							"    method: 'POST',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/json'\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify({\r",
+							"            id: 0,\r",
+							"            code: \"fbb5zf5sq\",\r",
+							"            name: \"product 1\",\r",
+							"            description: \"test product\",\r",
+							"            price: 10,\r",
+							"            quantity: 5,\r",
+							"            inventoryStatus: \"AVAILABLE\",\r",
+							"            category: \"simple product\",\r",
+							"            image: \"#\",\r",
+							"            rating: 4\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, response) {\r",
+							"    // Handle any errors that occurred during the request\r",
+							"    if (err) {\r",
+							"        console.error(err);\r",
+							"        throw new Error(\"Error occurred during request: \" + err.message);\r",
+							"    }\r",
+							"    \r",
+							"    // Verify the response code and format\r",
+							"    pm.expect(response).to.not.be.null;\r",
+							"    pm.expect(response.code).to.eql(201);\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        url: 'https://localhost:7263/api/ShopProducts/' + responseJson[responseJson.length - 1].id,\r",
+							"        method: 'DELETE',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json'\r",
+							"        }\r",
+							"    }, function (err, response) {\r",
+							"        // Handle any errors that occurred during the request\r",
+							"        if (err) {\r",
+							"            console.error(err);\r",
+							"            throw new Error(\"Error occurred during request: \" + err.message);\r",
+							"        }\r",
+							"\r",
+							"        // Verify the response code and format\r",
+							"        pm.expect(response).to.not.be.null;\r",
+							"        pm.expect(response.code).to.eql(204);\r",
+							"    });\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:7263/api/ShopProducts/0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7263",
+					"path": [
+						"api",
+						"ShopProducts",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
