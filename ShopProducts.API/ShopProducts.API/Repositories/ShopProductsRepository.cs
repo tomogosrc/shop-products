@@ -76,7 +76,7 @@ namespace ShopProducts.API.Repositories
         public async Task<IEnumerable<ShopProductsModel>> UpdateShopProduct(ShopProductsModel productToUpdate)
         {
             var product = await _shoProductsContext.ShopProducts.FindAsync(productToUpdate.id);
-            if (productToUpdate != null)
+            if (product != null)
             {
                 product.code = productToUpdate.code;
                 product.name = productToUpdate.name;    
