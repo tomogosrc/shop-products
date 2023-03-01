@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'product/models/product';
+import { Route, Router } from '@angular/router';
 import { ProductsService } from 'product/services/products.service';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -13,7 +14,7 @@ export class ProductsAdminComponent implements OnInit {
   products: Product[] = [];
 
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private route: Router) { }
 
   ngOnInit(): void {
 
@@ -30,13 +31,7 @@ export class ProductsAdminComponent implements OnInit {
    * @param id 
    */
   editProductFromTheList(id: number) {
-    // this.productsService.getOneProduct(id).subscribe(
-    //   (res: Product) => {
-    //     if (res !== null) 
-    //       this.productsService.editProduct(res);
-    //   }
-    // );
-
+    this.navigateToEdit(id);
   }
 
   /**
@@ -47,6 +42,14 @@ export class ProductsAdminComponent implements OnInit {
     this.productsService.removeProduct(id).subscribe(
       (products: Product[]) => this.products = products
     )
+  }
+
+  navigateToCreate() {
+    this.route.navigate(['/admin/product/create']);
+  }
+
+  navigateToEdit(id) {
+    this.route.navigate([`/admin/product/edit/${id}`]);
   }
 
 
