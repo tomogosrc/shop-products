@@ -10,13 +10,20 @@ import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { Router } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
-    ProductsAdminComponent
+    ProductsAdminComponent,
+    ProductCreateComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +34,10 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     RatingModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule,
+    InputTextareaModule,
+    InputNumberModule
   ]
 })
 export class ProductModule { }

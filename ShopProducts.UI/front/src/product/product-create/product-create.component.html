@@ -1,0 +1,49 @@
+<div class="create-container ">
+    <h5>Create a new product to the list </h5>
+    <form (ngSubmit)="onCreateProduct()">
+
+        <span class="p-float-label">
+            <input id="code" type="text" [(ngModel)]="productForm.code" name="code" pInputText>
+            <label for="code">Code</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input type="text" [(ngModel)]="productForm.name" name="name" pInputText>
+            <label>Name</label>
+        </span><br />
+        <span class="p-float-label">
+            <textarea id="description" rows="5" cols="30" [(ngModel)]="productForm.description" name="description"
+                pInputTextarea></textarea>
+            <label for="description">Description</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input id="price" type="text" [(ngModel)]="productForm.price" name="price" pInputText>
+            <label for="price">Price</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input id="price" type="text" [(ngModel)]="productForm.quantity" name="quantity" pInputText>
+            <label for="quantity">Quantity</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input id="inventoryStatus" type="text" [(ngModel)]="productForm.inventoryStatus" name="inventoryStatus"
+                pInputText>
+            <label for="inventoryStatus">Inventory Status</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input id="category" type="text" [(ngModel)]="productForm.category" name="category" pInputText>
+            <label for="category">Category</label>
+        </span><br />
+
+        <span class="p-float-label">
+            <input id="image" type="text" [(ngModel)]="productForm.image" name="image" pInputText>
+            <label for="image">Image</label>
+        </span><br />
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>

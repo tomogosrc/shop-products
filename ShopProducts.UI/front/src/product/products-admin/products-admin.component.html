@@ -1,5 +1,6 @@
 <div class="admin-container ">
-    <button pButton pRipple label="New" class="p-button-success" icon="pi pi-plus"></button>
+    <button (click)="navigateToCreate()" pButton pRipple label="New" class="p-button-success"
+        icon="pi pi-plus"></button>
 
     <p-table [value]="products">
         <ng-template pTemplate="header">
